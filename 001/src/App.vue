@@ -1,10 +1,7 @@
 <template>
   <div>
-    <!-- TODO，传入TRAINEE_SOURCE_MAP属性，以便使其能够展示选择器的选项  -->
-    <off-select />
-
-    <!-- TODO，传入tableHeaders、tableItems属性，以便使其能够展示学员的姓名和生源  -->
-    <off-table />
+    <off-select :items="TRAINEE_SOURCE_MAP" />
+    <off-table :headers="tableHeaders" :items="tableItems" />
   </div>
 </template>
 
