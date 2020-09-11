@@ -1,6 +1,10 @@
 <template>
   <div>
-    <off-select :items="TRAINEE_SOURCE_MAP" />
+    <off-select
+      name="traineeSource"
+      :items="TRAINEE_SOURCE_MAP"
+      @select="sourceTypeFilterValue = $event"
+    />
     <off-table :headers="tableHeaders" :items="tableItems" />
   </div>
 </template>
@@ -21,11 +25,18 @@ export default {
       TRAINEE_SOURCE_MAP,
       tableHeaders: traineeDataType,
       trainees,
+      sourceTypeFilterValue: "",
     };
   },
   computed: {
     tableItems() {
-      return this.trainees.map(({ sourceType, ...rest }) => ({
+      const filteredTrainees = this.sourceTypeFilterValue
+        ? this.trainees.filter(
+            (x) => x.sourceType === this.sourceTypeFilterValue
+          )
+        : this.trainees;
+
+      return filteredTrainees.map(({ sourceType, ...rest }) => ({
         ...rest,
         sourceType: TRAINEE_SOURCE_MAP[sourceType],
       }));
