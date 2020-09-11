@@ -12,7 +12,7 @@ export const TRAINEE_SOURCE_MAP = {
   [TRAINEE_SOURCE_TYPE.WECHAT]: "微信公共号",
 };
 
-export const tableHeaders = [
+export const traineeDataType = [
   {
     key: "name",
     value: "姓名",
@@ -65,8 +65,3 @@ export const trainees = [
     sourceType: TRAINEE_SOURCE_TYPE.WECHAT,
   },
 ];
-
-export const tableItems = trainees.map(({ sourceType, ...rest }) => ({
-  ...rest,
-  sourceType: TRAINEE_SOURCE_MAP[sourceType],
-}));

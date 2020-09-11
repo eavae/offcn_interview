@@ -7,6 +7,7 @@
 export default {
   name: "off-select",
   props: {
+    name: String,
     items: Object,
   },
 };
